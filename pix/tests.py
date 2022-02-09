@@ -35,3 +35,21 @@ class ProfileTestClass(TestCase):
         updated_profile = Profile.objects.filter(bio = "Living free").update(bio = "Live free indeed")
         self.assertTrue(self.profile.bio != updated_profile)
         self.assertNotEqual(self.profile, updated_profile)
+
+
+class ImageTestClass(TestCase):
+    # Set up method
+    def setUp(self):
+        self.new_user = User(first_name = 'John', last_name = 'Doe', username = 'test', email = 'test@gmail.com', password = 'nana')
+        self.new_user.save()
+        self.image = Image(image = 'lamborghini.jpg' ,image_name = "Lamborghini", user = self.new_user, image_caption = 'Cool stuff')
+
+    # Testing instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.image, Image))
+
+    # Testing the save method
+    def test_save_method(self):
+        self.image.save_post()
+        posts = Image.objects.all()
+        self.assertTrue(len(posts) > 0)
