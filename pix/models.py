@@ -46,6 +46,11 @@ class Image(models.Model):
     def delete_post(self):
         self.delete()  
 
+    # Update caption method
+    def update_post(self):
+        updated_post = Image.objects.filter().update()
+        return updated_post
+
 class Like(models.Model):
     LIKE_CHOICES = [
         ('Like', 'Like'),
