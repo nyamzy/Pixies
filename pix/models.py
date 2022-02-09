@@ -42,6 +42,9 @@ class Image(models.Model):
     def save_post(self):
         self.save()
 
+    # Delete post method
+    def delete_post(self):
+        self.delete()  
 
 class Like(models.Model):
     LIKE_CHOICES = [
