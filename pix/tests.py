@@ -53,3 +53,10 @@ class ImageTestClass(TestCase):
         self.image.save_post()
         posts = Image.objects.all()
         self.assertTrue(len(posts) > 0)
+
+    # Testing the delete method
+    def test_delete_method(self):
+        self.image.save_post()
+        self.image.delete_post()
+        posts = Image.objects.all()
+        self.assertTrue(len(posts)==0)
