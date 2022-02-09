@@ -60,3 +60,11 @@ class ImageTestClass(TestCase):
         self.image.delete_post()
         posts = Image.objects.all()
         self.assertTrue(len(posts)==0)
+
+    # Testing the update method 
+    def test_update_method(self):
+        self.image.save_post()
+        self.image.update_post()
+        updated_caption = Image.objects.filter(image_caption = "Cool stuff").update(image_caption = "Cool stuff bro")
+        self.assertTrue(self.image.image_caption != updated_caption)
+        self.assertNotEqual(self.image, updated_caption)
