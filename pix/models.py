@@ -19,6 +19,11 @@ class Profile(models.Model):
     def delete_profile(self):
         self.delete()  
 
+    # Update profile method
+    def update_profile(self):
+        updated_profile = Profile.objects.filter().update()
+        return updated_profile
+
 
 class Image(models.Model):
     image = models.ImageField(upload_to = 'images/')
