@@ -27,3 +27,11 @@ class ProfileTestClass(TestCase):
         self.profile.delete_profile()
         profiles = Profile.objects.all()
         self.assertTrue(len(profiles)==0)
+
+    # Testing the update method 
+    def test_update_method(self):
+        self.profile.save_profile()
+        self.profile.update_profile()
+        updated_profile = Profile.objects.filter(bio = "Living free").update(bio = "Live free indeed")
+        self.assertTrue(self.profile.bio != updated_profile)
+        self.assertNotEqual(self.profile, updated_profile)
