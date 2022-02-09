@@ -38,6 +38,10 @@ class Image(models.Model):
     def __str__(self):
         return self.image_name
 
+    # Save post method
+    def save_post(self):
+        self.save()
+
 
 class Like(models.Model):
     LIKE_CHOICES = [
