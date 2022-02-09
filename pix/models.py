@@ -6,10 +6,14 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     profile_pic = models.ImageField(upload_to = 'images/')
     bio = models.CharField(max_length=100)
-    user = models.OneToOneField(User, on_delete = models.CASCADE)
+    user = models.OneToOneField(User, on_delete = models.CASCADE, null = True)
 
     def __str__(self):
         return self.bio
+
+    # Save profile method
+    def save_profile(self):
+        self.save()
 
 
 class Image(models.Model):
