@@ -30,10 +30,10 @@ class Image(models.Model):
     image_name = models.CharField(max_length=30)
     image_caption = models.CharField(max_length=100)
     pub_date = models.DateTimeField(auto_now_add = True)
-    like_count = models.ManyToManyField(User, default = 0, related_name='liked')
-    comment_count = models.IntegerField(default = 0)
-    profile = models.ForeignKey(User, on_delete = models.CASCADE, null = True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null = True, related_name = 'user')
+    # like_count = models.ManyToManyField(User, default = 0, related_name='liked')
+    # comment_count = models.IntegerField(default = 0)
+    # profile = models.ForeignKey(User, on_delete = models.CASCADE, null = True)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE, null = True, related_name = 'user')
 
     def __str__(self):
         return self.image_name
@@ -50,6 +50,12 @@ class Image(models.Model):
     def update_post(self):
         updated_post = Image.objects.filter().update()
         return updated_post
+
+    # Search method
+    @classmethod
+    def search_image(cls, search_term):
+        images = cls.objects.filter(image_name__icontains = search_term)
+        return images
 
 class Like(models.Model):
     LIKE_CHOICES = [
