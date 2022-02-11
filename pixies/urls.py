@@ -21,4 +21,5 @@ urlpatterns = [
     path('', include('pix.urls'),),
     path('accounts/', include('django_registration.backends.one_step.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('tinymce/', include('tinymce.urls')),
 ]
