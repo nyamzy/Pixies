@@ -36,7 +36,7 @@ To work on this project, you can clone it to your repository.
 This application was deployed to [heroku](https://heroku.com).
 
 # Live Link
-  [Pixies](https://)
+  [Pixies](https://raterrate.herokuapp.com/)
 
 ## Author
 
