@@ -1,0 +1,25 @@
+{% extends 'all-pix/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% if images %}
+            <h2>Found <em>{{images|length}}</em> results of the searched term <em>{{message}}</em></h2>
+        {% else %}
+            <h2>Found 0 images for the searched term {{message}}</h2>
+        {% endif %}
+    </div>
+    <div class="row">
+        {% if images %}
+            {% for image in images %}
+                <div class="col-md-10">
+                    <img src="{{ image.image.url }}" alt="Image" class="img-fluid">
+                    <h2>{{image.image_name}}</h2>
+                    <h4>{{image.image_caption}}</h4>
+                    <h4>Posted on {{image.pub_date}}</h4>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
