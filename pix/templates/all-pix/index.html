@@ -1,0 +1,26 @@
+{% extends 'all-pix/base.html' %}
+
+{% block content %}
+{{block.super}}
+<div class="container">
+    {% for image in image_list %}
+        <div class="card" style="width: 40rem;">
+            <div class="card-header">
+                {{image.user}}
+              </div>
+            <a href="">
+                <img class="card-img-top" src="{{image.image.url}}" alt="{{image.image_name}}">
+            </a>
+            <div class="card-body">
+                <p class="card-text"><strong>{{image.user}}</strong> {{image.image_caption|safe}}</p>
+            </div>
+            <div class="card-footer">
+                <p>Posted {{image.pub_date|timesince}} ago</p>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+    {% endfor %}
+</div>
+{% endblock %}
